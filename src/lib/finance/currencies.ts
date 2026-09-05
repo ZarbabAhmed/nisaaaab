@@ -25,5 +25,10 @@ export const CURRENCIES: CurrencyDef[] = [
 export const DEFAULT_CURRENCY = "PKR";
 
 export function getCurrency(code: string): CurrencyDef {
-  return CURRENCIES.find((c) => c.code === code) ?? CURRENCIES[0]!;
+  const found = CURRENCIES.find((c) => c.code === code);
+  if (found) return found;
+  if (!code) return CURRENCIES[0]!;
+  // Custom currency entered by the user — show their code, keep numbers intact.
+  return { code, symbol: code, name: code, prefix: `${code} `, locale: "en-US" };
 }
+

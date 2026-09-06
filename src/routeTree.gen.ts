@@ -16,6 +16,8 @@ import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppBudgetRouteImport } from './routes/app.budget'
+import { Route as AppGoalsRouteImport } from './routes/app.goals'
+import { Route as AppReviewRouteImport } from './routes/app.review'
 import { Route as AppSavingsRouteImport } from './routes/app.savings'
 import { Route as AppTransactionsRouteImport } from './routes/app.transactions'
 
@@ -54,6 +56,16 @@ const AppBudgetRoute = AppBudgetRouteImport.update({
   path: '/budget',
   getParentRoute: () => AppRoute,
 } as any)
+const AppGoalsRoute = AppGoalsRouteImport.update({
+  id: '/goals',
+  path: '/goals',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReviewRoute = AppReviewRouteImport.update({
+  id: '/review',
+  path: '/review',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppSavingsRoute = AppSavingsRouteImport.update({
   id: '/savings',
   path: '/savings',
@@ -72,6 +84,8 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/terms': typeof TermsRoute
   '/app/budget': typeof AppBudgetRoute
+  '/app/goals': typeof AppGoalsRoute
+  '/app/review': typeof AppReviewRoute
   '/app/savings': typeof AppSavingsRoute
   '/app/transactions': typeof AppTransactionsRoute
   '/app/': typeof AppIndexRoute
@@ -82,6 +96,8 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRoute
   '/terms': typeof TermsRoute
   '/app/budget': typeof AppBudgetRoute
+  '/app/goals': typeof AppGoalsRoute
+  '/app/review': typeof AppReviewRoute
   '/app/savings': typeof AppSavingsRoute
   '/app/transactions': typeof AppTransactionsRoute
   '/app': typeof AppIndexRoute
@@ -94,6 +110,8 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/terms': typeof TermsRoute
   '/app/budget': typeof AppBudgetRoute
+  '/app/goals': typeof AppGoalsRoute
+  '/app/review': typeof AppReviewRoute
   '/app/savings': typeof AppSavingsRoute
   '/app/transactions': typeof AppTransactionsRoute
   '/app/': typeof AppIndexRoute
@@ -107,6 +125,8 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/terms'
     | '/app/budget'
+    | '/app/goals'
+    | '/app/review'
     | '/app/savings'
     | '/app/transactions'
     | '/app/'
@@ -117,6 +137,8 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/terms'
     | '/app/budget'
+    | '/app/goals'
+    | '/app/review'
     | '/app/savings'
     | '/app/transactions'
     | '/app'
@@ -128,6 +150,8 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/terms'
     | '/app/budget'
+    | '/app/goals'
+    | '/app/review'
     | '/app/savings'
     | '/app/transactions'
     | '/app/'
@@ -192,6 +216,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppBudgetRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/goals': {
+      id: '/app/goals'
+      path: '/goals'
+      fullPath: '/app/goals'
+      preLoaderRoute: typeof AppGoalsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/review': {
+      id: '/app/review'
+      path: '/review'
+      fullPath: '/app/review'
+      preLoaderRoute: typeof AppReviewRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/savings': {
       id: '/app/savings'
       path: '/savings'
@@ -211,6 +249,8 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppBudgetRoute: typeof AppBudgetRoute
+  AppGoalsRoute: typeof AppGoalsRoute
+  AppReviewRoute: typeof AppReviewRoute
   AppSavingsRoute: typeof AppSavingsRoute
   AppTransactionsRoute: typeof AppTransactionsRoute
   AppIndexRoute: typeof AppIndexRoute
@@ -218,6 +258,8 @@ interface AppRouteChildren {
 
 const AppRouteChildren: AppRouteChildren = {
   AppBudgetRoute: AppBudgetRoute,
+  AppGoalsRoute: AppGoalsRoute,
+  AppReviewRoute: AppReviewRoute,
   AppSavingsRoute: AppSavingsRoute,
   AppTransactionsRoute: AppTransactionsRoute,
   AppIndexRoute: AppIndexRoute,

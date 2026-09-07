@@ -203,7 +203,7 @@ function Header({ month }: { month: string }) {
   );
 }
 
-function Cell({ label, value, compare }: { label: string; value: number; compare?: number }) {
+function Cell({ label, value, compare }: { label: string; value: number; compare?: number | undefined }) {
   const diff = compare === undefined ? null : value - compare;
   return (
     <div className="rounded-2xl border bg-card px-3 py-3">

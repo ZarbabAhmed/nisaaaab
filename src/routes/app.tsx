@@ -89,30 +89,64 @@ function DesktopSidebar() {
 function MobileNav() {
   const { openExpense } = useQuickAdd();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [moreOpen, setMoreOpen] = useState(false);
+
+  const MORE = [
+    { to: "/app/savings", label: "Savings", icon: PiggyBank },
+    { to: "/app/goals", label: "Goals", icon: Target },
+    { to: "/app/review", label: "Monthly review", icon: BarChart3 },
+    { to: "/app/profile", label: "Profile", icon: User },
+    { to: "/app/settings", label: "Settings", icon: Settings },
+  ] as const;
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-30 border-t bg-background/95 backdrop-blur lg:hidden">
-      <div className="relative mx-auto flex max-w-2xl items-stretch justify-between px-2 pb-[max(0.25rem,env(safe-area-inset-bottom))]">
-        {NAV.slice(0, 2).map((item) => (
-          <NavItem key={item.to} {...item} active={isActive(pathname, item.to, item.exact)} />
-        ))}
-        <div className="flex w-16 shrink-0 items-start justify-center">
+    <>
+      <nav className="fixed inset-x-0 bottom-0 z-30 border-t bg-background/95 backdrop-blur lg:hidden">
+        <div className="relative mx-auto flex max-w-2xl items-stretch justify-between px-2 pb-[max(0.25rem,env(safe-area-inset-bottom))]">
+          {NAV.slice(0, 2).map((item) => (
+            <NavItem key={item.to} {...item} active={isActive(pathname, item.to, item.exact)} />
+          ))}
+          <div className="flex w-16 shrink-0 items-start justify-center">
+            <button
+              type="button"
+              onClick={openExpense}
+              aria-label="Add expense"
+              className="-mt-6 inline-flex size-14 items-center justify-center rounded-full bg-gradient-brand text-white shadow-hero transition-transform active:scale-95"
+            >
+              <Plus className="size-6" />
+            </button>
+          </div>
+          <NavItem {...NAV[2]} active={isActive(pathname, NAV[2].to, NAV[2].exact)} />
           <button
             type="button"
-            onClick={openExpense}
-            aria-label="Add expense"
-            className="-mt-6 inline-flex size-14 items-center justify-center rounded-full bg-gradient-brand text-white shadow-hero transition-transform active:scale-95"
+            onClick={() => setMoreOpen(true)}
+            className="flex flex-1 flex-col items-center gap-1 py-2.5 text-[11px] font-bold text-muted-foreground transition-colors"
           >
-            <Plus className="size-6" />
+            <MoreHorizontal className="size-5" aria-hidden />
+            More
           </button>
         </div>
-        {NAV.slice(2, 4).map((item) => (
-          <NavItem key={item.to} {...item} active={isActive(pathname, item.to, item.exact)} />
-        ))}
-      </div>
-    </nav>
+      </nav>
+
+      <ResponsiveSheet open={moreOpen} onOpenChange={setMoreOpen} title="More" description="Everything else in one place.">
+        <div className="grid grid-cols-2 gap-3 pb-2">
+          {MORE.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              onClick={() => setMoreOpen(false)}
+              className="flex items-center gap-3 rounded-2xl border p-4 text-sm font-bold transition-colors hover:border-primary/40"
+            >
+              <item.icon className="size-[18px] shrink-0" aria-hidden />
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </ResponsiveSheet>
+    </>
   );
 }
+
 
 function isActive(pathname: string, to: string, exact: boolean) {
   return exact ? pathname === to : pathname.startsWith(to);

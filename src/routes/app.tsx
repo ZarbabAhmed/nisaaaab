@@ -34,8 +34,10 @@ const NAV = [
 
 const SIDE_EXTRA = [
   { to: "/app/review", label: "Monthly review", icon: BarChart3 },
+  { to: "/app/profile", label: "Profile", icon: User },
   { to: "/app/settings", label: "Settings", icon: Settings },
 ] as const;
+
 
 function AppLayout() {
   const { state, ready } = useApp();

@@ -1,20 +1,24 @@
 import { createFileRoute, Link, Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   BarChart3,
   Home,
+  MoreHorizontal,
   PiggyBank,
   Plus,
   Receipt,
   Settings,
   Target,
+  User,
   Wallet,
 } from "lucide-react";
 import { Wordmark } from "@/components/brand/Logo";
 import { QuickAddProvider, useQuickAdd } from "@/components/transactions/QuickAdd";
+import { ResponsiveSheet } from "@/components/common/ResponsiveSheet";
 import { useApp } from "@/lib/store/app-store";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
 
 export const Route = createFileRoute("/app")({
   component: AppLayout,

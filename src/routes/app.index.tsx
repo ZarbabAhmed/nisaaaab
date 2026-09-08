@@ -7,6 +7,8 @@ import { StatusPill } from "@/components/money/StatusPill";
 import { CategoryIcon } from "@/components/money/CategoryIcon";
 import { TransactionRow } from "@/components/transactions/TransactionRow";
 import { EmptyState } from "@/components/common/EmptyState";
+import { SafeToSpendDetail } from "@/components/money/SafeToSpendDetail";
+import { Insights } from "@/components/money/Insights";
 import { useQuickAdd } from "@/components/transactions/QuickAdd";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/lib/store/app-store";
@@ -63,6 +65,7 @@ function Dashboard() {
           <span className="rounded-full bg-white/15 px-2.5 py-1 text-xs font-semibold">
             {summary.daysLeft} days left
           </span>
+          <SafeToSpendDetail />
         </div>
       </section>
 
@@ -83,6 +86,8 @@ function Dashboard() {
           Add income
         </Button>
       </section>
+
+      <Insights />
 
       <Card title="Budget health" action={{ to: "/app/budget", label: "Manage" }}>
         {variableLines.length === 0 ? (

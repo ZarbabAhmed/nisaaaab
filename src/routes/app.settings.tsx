@@ -136,7 +136,7 @@ function SettingsPage() {
         onClick={() => {
           actions.signOut();
           toast.success("Signed out");
-          void navigate({ to: "/auth" });
+          void navigate({ to: "/auth", search: { mode: "login" } });
         }}
       >
         <LogOut className="size-4" />

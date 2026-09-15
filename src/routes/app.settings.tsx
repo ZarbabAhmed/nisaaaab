@@ -34,6 +34,7 @@ import { CURRENCIES, getCurrency } from "@/lib/finance/currencies";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/settings")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "Settings — Nisaab" },

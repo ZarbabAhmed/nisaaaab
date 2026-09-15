@@ -13,6 +13,7 @@ type Mode = "login" | "signup";
 type Step = "identity" | "otp" | "pin";
 
 export const Route = createFileRoute("/auth")({
+  staticData: { sitemap: false },
   validateSearch: (search: Record<string, unknown>): { mode: Mode } => ({
     mode: search["mode"] === "login" ? "login" : "signup",
   }),

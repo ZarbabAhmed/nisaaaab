@@ -8,6 +8,7 @@ import { StatusPill } from "@/components/money/StatusPill";
 import { useApp } from "@/lib/store/app-store";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Nisaab — Know what you can safely spend today" },

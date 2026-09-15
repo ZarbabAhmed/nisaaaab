@@ -17,6 +17,7 @@ import { formatDay, monthLabel, todayISO } from "@/lib/finance/format";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/savings")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "Savings — Nisaab" },

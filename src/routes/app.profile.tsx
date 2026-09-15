@@ -16,6 +16,7 @@ import { achievements } from "@/lib/finance/achievements";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/profile")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "Profile — Nisaab" },

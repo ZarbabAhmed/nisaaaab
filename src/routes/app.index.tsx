@@ -16,6 +16,7 @@ import { emergencyProgress, goalProgress, summarizeWeek, txnsForMonth } from "@/
 import { monthLabel } from "@/lib/finance/format";
 
 export const Route = createFileRoute("/app/")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "Dashboard — Nisaab" },

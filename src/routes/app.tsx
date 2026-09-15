@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 
 
 export const Route = createFileRoute("/app")({
+  staticData: { sitemap: "exclude-subtree" },
   component: AppLayout,
 });
 

@@ -27,6 +27,7 @@ import { monthKey, monthLabel, shiftMonth } from "@/lib/finance/format";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/transactions")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "Activity — Nisaab" },

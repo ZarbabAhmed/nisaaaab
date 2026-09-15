@@ -30,6 +30,7 @@ import { monthLabel } from "@/lib/finance/format";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/budget")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "Budget — Nisaab" },

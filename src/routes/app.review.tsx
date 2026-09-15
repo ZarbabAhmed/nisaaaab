@@ -12,6 +12,7 @@ import { summarize } from "@/lib/finance/calc";
 import { monthKey, monthLabel, shiftMonth } from "@/lib/finance/format";
 
 export const Route = createFileRoute("/app/review")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "Monthly review — Nisaab" },

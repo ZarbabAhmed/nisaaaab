@@ -6,6 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Wordmark } from "@/components/brand/Logo";
 
 export const Route = createFileRoute("/terms")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Terms & privacy — Nisaab" },

@@ -20,6 +20,7 @@ import {
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/onboarding")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "Set up your plan — Nisaab" },
